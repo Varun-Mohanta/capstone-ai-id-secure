@@ -1,0 +1,238 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="tm-v2" name="Threat Model">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1920" pageHeight="1080" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ===================== Trust boundaries & components ===================== -->
+
+        <!-- External Provider -->
+        <mxCell id="b-external" value="External Provider" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#F5F5F5;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="920" y="-60" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="p-llm" value="LLM Provider" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-external">
+          <mxGeometry x="40" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Identity Provider -->
+        <mxCell id="b-idp" value="Identity Provider Boundary" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#FFF4E5;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="0" y="200" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="p-auth0" value="Auth0 Tenant" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-idp">
+          <mxGeometry x="70" y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- User and Frontend -->
+        <mxCell id="b-user" value="User and Frontend Boundary" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#EAF2FB;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="0" y="450" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="i-user" value="User" style="html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;strokeWidth=2;strokeColor=#2F5597;fillColor=none;shadow=0;dashed=0;shape=mxgraph.ios7.icons.user;labelPerimeter=1;fontColor=#1A1A1A;fontSize=11;fontStyle=1;labelBackgroundColor=none;" vertex="1" parent="b-user">
+          <mxGeometry x="25" y="70" width="60" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="p-ui" value="User Interface" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-user">
+          <mxGeometry x="130" y="60" width="150" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Application Backend -->
+        <mxCell id="b-backend" value="Application Backend Boundary" style="swimlane;startSize=26;rounded=1;arcSize=2;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#F3F7EE;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="170" width="720" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="p-endpoint" value="Chatbot Backend Endpoint" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-backend">
+          <mxGeometry x="60" y="80" width="170" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="d-chatdb" value="Chat Session DB" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=11;fontStyle=1;spacingTop=20;" vertex="1" parent="b-backend">
+          <mxGeometry x="40" y="530" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="i-msg" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/icon-cache1/bitsies_-2960/Message-1454.svg;imageBackground=none;" vertex="1" parent="b-backend">
+          <mxGeometry x="85" y="538" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="d-secrets" value="Secrets Manager" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=11;fontStyle=1;spacingTop=20;" vertex="1" parent="b-backend">
+          <mxGeometry x="360" y="550" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="i-key" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;outlineConnect=0;shape=mxgraph.vvd.key;rotation=90;" vertex="1" parent="b-backend">
+          <mxGeometry x="405" y="547" width="20" height="41.67" as="geometry" />
+        </mxCell>
+
+        <!-- Agent Runtime (nested in backend) -->
+        <mxCell id="b-agent" value="Agent Runtime Trust Boundary" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#EFE9F7;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="b-backend">
+          <mxGeometry x="340" y="80" width="320" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="p-harness" value="AI Chatbot Harness" style="swimlane;startSize=26;rounded=1;arcSize=6;html=1;whiteSpace=wrap;fillColor=#6C4BA0;strokeColor=#6C4BA0;strokeWidth=1.5;swimlaneFillColor=#FFFFFF;fontColor=#FFFFFF;fontStyle=1;fontSize=12;collapsible=0;" vertex="1" parent="b-agent">
+          <mxGeometry x="30" y="50" width="260" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="i-bot" value="" style="sketch=0;outlineConnect=0;gradientColor=none;fillColor=#6C4BA0;strokeColor=none;dashed=0;html=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.waf_bot;" vertex="1" parent="p-harness">
+          <mxGeometry x="87.65" y="88" width="84.7" height="84.7" as="geometry" />
+        </mxCell>
+
+        <!-- Internal API (nested in backend) -->
+        <mxCell id="b-api" value="Internal API Trust Boundary" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#E6F4F1;fontStyle=1;fontSize=11;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="b-backend">
+          <mxGeometry x="500" y="510" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p-rest" value="Internal REST APIs" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-api">
+          <mxGeometry x="20" y="40" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- MCP Server -->
+        <mxCell id="b-mcp" value="MCP Server Trust Boundary" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#FFF9DB;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="680" width="240" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="i-mcp" value="MCP Server" style="html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;strokeWidth=2;strokeColor=#2F5597;fillColor=none;shadow=0;dashed=0;shape=mxgraph.ios7.icons.tools;pointerEvents=1;labelPerimeter=1;fontColor=#1A1A1A;fontSize=11;fontStyle=1;labelBackgroundColor=none;" vertex="1" parent="b-mcp">
+          <mxGeometry x="85" y="45" width="70" height="74" as="geometry" />
+        </mxCell>
+
+        <!-- RAG Pipeline -->
+        <mxCell id="b-rag" value="RAG Pipeline" style="swimlane;startSize=26;rounded=1;arcSize=3;dashed=1;dashPattern=8 4;strokeColor=#B85450;strokeWidth=2;fillColor=#F8CECC;swimlaneFillColor=#EEF2FF;fontStyle=1;fontSize=12;fontColor=#7A1F1F;html=1;whiteSpace=wrap;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="250" width="540" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="p-rag" value="RAG Service" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-rag">
+          <mxGeometry x="50" y="80" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p-embed" value="Embedding Service" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=12;fontStyle=1;" vertex="1" parent="b-rag">
+          <mxGeometry x="50" y="260" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d-vector" value="Vector Store" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2F5597;strokeWidth=1.5;fontColor=#1A1A1A;fontSize=11;fontStyle=1;spacingTop=20;" vertex="1" parent="b-rag">
+          <mxGeometry x="360" y="70" width="140" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- ===================== Data flows ===================== -->
+
+        <!-- User <-> Identity Provider -->
+        <mxCell id="e-oidc" value="OIDC authorize with PKCE" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.2;exitY=0;exitDx=0;exitDy=0;entryX=0.5625;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-ui" target="p-auth0">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-redirect" value="Redirect with authorization code" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.84375;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-auth0" target="p-ui">
+          <mxGeometry x="-0.42" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Identity Provider <-> Chatbot Endpoint -->
+        <mxCell id="e-code-exchange" value="Code and PKCE verifier exchange" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.0417;exitDx=0;exitDy=0;entryX=1;entryY=0.2143;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-endpoint" target="p-auth0">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-token-resp" value="Token endpoint response (ID + access tokens)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.7143;exitDx=0;exitDy=0;entryX=0;entryY=0.1389;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-auth0" target="p-endpoint">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- User Interface <-> Chatbot Endpoint -->
+        <mxCell id="e-callback" value="Browser callback with authorization code" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.1364;exitDx=0;exitDy=0;entryX=0;entryY=0.7639;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-ui" target="p-endpoint">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-chat-req" value="Chat request with session cookie" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.4091;exitDx=0;exitDy=0;entryX=0;entryY=0.8472;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-ui" target="p-endpoint">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-chat-resp" value="Chat response + secure session cookie" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.9306;exitDx=0;exitDy=0;entryX=1;entryY=0.6818;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-endpoint" target="p-ui">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Chatbot Endpoint <-> Chat Session DB / Harness -->
+        <mxCell id="e-chatdb" value="R/W on Chat Session Data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.2059;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-endpoint" target="d-chatdb">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-user-ctx" value="Request plus validated&lt;br&gt;user context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.2778;exitDx=0;exitDy=0;entryX=0;entryY=0.1923;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-endpoint" target="p-harness">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-bot-resp" value="Chatbot Response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.4615;exitDx=0;exitDy=0;entryX=1;entryY=0.4722;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="p-endpoint">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Harness <-> Auth0 (M2M) -->
+        <mxCell id="e-m2m-req" value="Client credentials grant (M2M client)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.2308;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="p-auth0">
+          <mxGeometry x="0.05" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="110" />
+              <mxPoint x="110" y="110" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-m2m-resp" value="M2M access token response (audience + scopes)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-auth0" target="p-harness">
+          <mxGeometry x="-0.05" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="140" />
+              <mxPoint x="836" y="140" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Secrets Manager -> Harness -->
+        <mxCell id="e-m2m-secret" value="M2M client credential&lt;br&gt;from secrets manager" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.2727;exitY=0;exitDx=0;exitDy=0;entryX=0.0769;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="d-secrets" target="p-harness">
+          <mxGeometry x="0.375" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-llm-key" value="LLM API key&lt;br&gt;from secrets manager" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.7273;exitY=0;exitDx=0;exitDy=0;entryX=0.2692;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="d-secrets" target="p-harness">
+          <mxGeometry x="-0.5" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Harness <-> Internal REST APIs -->
+        <mxCell id="e-api-call" value="M2M token;&lt;br&gt;least-privilege scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.6923;exitY=1;exitDx=0;exitDy=0;entryX=0.2143;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="p-rest">
+          <mxGeometry x="-0.375" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-resp" value="API response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.7143;exitY=0;exitDx=0;exitDy=0;entryX=0.9615;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-rest" target="p-harness">
+          <mxGeometry x="-0.125" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Harness <-> LLM Provider -->
+        <mxCell id="e-prompt" value="Prompt over TLS;&lt;br&gt;API key in auth header" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.7308;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="p-llm">
+          <mxGeometry x="0.48" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-model-resp" value="Model Response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.5625;exitY=1;exitDx=0;exitDy=0;entryX=0.9231;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-llm" target="p-harness">
+          <mxGeometry x="0.384" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Harness <-> RAG Service -->
+        <mxCell id="e-rag-query" value="Query text with agent identity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.1731;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="p-rag">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-rag-text" value="Text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.2885;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-rag" target="p-harness">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- RAG internals -->
+        <mxCell id="e-embed-req" value="Embedding request&lt;br&gt;with RAG identity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-rag" target="p-embed">
+          <mxGeometry x="-0.5" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-embed-resp" value="Query embedding&lt;br&gt;response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-embed" target="p-rag">
+          <mxGeometry x="-0.5" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-vector-search" value="Scoped search with&lt;br&gt;RAG service identity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.3333;exitDx=0;exitDy=0;entryX=0;entryY=0.125;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-rag" target="d-vector">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-chunks" value="Retrieved&lt;br&gt;Chunks" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="d-vector" target="p-rag">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1655" y="488" />
+              <mxPoint x="1655" y="375" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Harness <-> MCP Server -->
+        <mxCell id="e-tool-req" value="Tool request with agent identity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0.4167;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-harness" target="b-mcp">
+          <mxGeometry x="-0.4" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="508" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-tool-resp" value="Tool Response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0.2083;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.9231;entryDx=0;entryDy=0;" edge="1" parent="1" source="b-mcp" target="p-harness">
+          <mxGeometry x="-0.6" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="540" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- MCP Server <-> Internal REST APIs -->
+        <mxCell id="e-mcp-call" value="Tool call with&lt;br&gt;MCP server identity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.3056;exitDx=0;exitDy=0;entryX=1;entryY=0.1875;entryDx=0;entryDy=0;" edge="1" parent="1" source="b-mcp" target="p-rest">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-mcp-result" value="Tool Result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;endSize=6;fontColor=#1A1A1A;fontSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.8125;exitDx=0;exitDy=0;entryX=0;entryY=0.5833;entryDx=0;entryDy=0;" edge="1" parent="1" source="p-rest" target="b-mcp">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
