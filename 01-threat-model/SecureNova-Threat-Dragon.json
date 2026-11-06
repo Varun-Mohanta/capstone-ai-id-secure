@@ -1,0 +1,548 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "SecureNova AI Customer Service Platform - Identity Threat Model",
+    "owner": "AI Identity Security Analyst",
+    "description": "STRIDE-per-flow threat model of the SecureNova LLM agent platform (Auth0 IdP, AI chatbot harness, internal REST APIs, RAG pipeline, MCP server, external LLM provider). 14 identity flows x 6 STRIDE categories = 84 assessments (81 threats, 3 justified N/A). Companion matrix: 01-threat-model/STRIDE-Matrix.md.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "SecureNova AI Platform - Identity Data Flow (STRIDE)",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.2.0",
+        "description": "DFD with eight trust boundaries: User/Frontend, Identity Provider, Application Backend, Agent Runtime, Internal API, RAG Pipeline, MCP Server, External Provider.",
+        "cells": [
+          {
+            "position": { "x": 20, "y": 40 },
+            "size": { "width": 340, "height": 200 },
+            "attrs": { "label": { "text": "TB1 User / Frontend Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000001",
+            "data": { "type": "tm.BoundaryBox", "name": "TB1 User / Frontend Boundary", "description": "Untrusted client device and user input.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 20, "y": 300 },
+            "size": { "width": 340, "height": 180 },
+            "attrs": { "label": { "text": "TB2 Identity Provider Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000002",
+            "data": { "type": "tm.BoundaryBox", "name": "TB2 Identity Provider Boundary", "description": "Third-party SaaS (Auth0) that issues all tokens.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 400, "y": 40 },
+            "size": { "width": 640, "height": 560 },
+            "attrs": { "label": { "text": "TB3 Application Backend Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000003",
+            "data": { "type": "tm.BoundaryBox", "name": "TB3 Application Backend Boundary", "description": "SecureNova-controlled server zone (contains the Agent Runtime boundary).", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 640, "y": 80 },
+            "size": { "width": 380, "height": 280 },
+            "attrs": { "label": { "text": "TB4 Agent Runtime Trust Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000004",
+            "data": { "type": "tm.BoundaryBox", "name": "TB4 Agent Runtime Trust Boundary", "description": "Non-deterministic LLM-driven code holding workload credentials.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 1080, "y": 40 },
+            "size": { "width": 260, "height": 220 },
+            "attrs": { "label": { "text": "TB5 Internal API Trust Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000005",
+            "data": { "type": "tm.BoundaryBox", "name": "TB5 Internal API Trust Boundary", "description": "Systems of record requiring scoped access tokens.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 1400, "y": 40 },
+            "size": { "width": 460, "height": 500 },
+            "attrs": { "label": { "text": "TB6 RAG Pipeline Trust Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000006",
+            "data": { "type": "tm.BoundaryBox", "name": "TB6 RAG Pipeline Trust Boundary", "description": "Stores and serves untrusted ingested content.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 1080, "y": 320 },
+            "size": { "width": 260, "height": 220 },
+            "attrs": { "label": { "text": "TB7 MCP Server Trust Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000007",
+            "data": { "type": "tm.BoundaryBox", "name": "TB7 MCP Server Trust Boundary", "description": "Tool-execution identity acting on internal APIs.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+          {
+            "position": { "x": 640, "y": 640 },
+            "size": { "width": 380, "height": 160 },
+            "attrs": { "label": { "text": "TB8 External Provider Boundary" } },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "b0000000-0000-4000-8000-000000000008",
+            "data": { "type": "tm.BoundaryBox", "name": "TB8 External Provider Boundary", "description": "Third-party LLM API reached with the LLM API key.", "isTrustBoundary": true, "hasOpenThreats": false }
+          },
+
+          {
+            "position": { "x": 40, "y": 120 },
+            "size": { "width": 140, "height": 70 },
+            "attrs": { "text": { "text": "User" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000001",
+            "data": { "type": "tm.Actor", "name": "User", "description": "Human customer or admin. Identity: Auth0 user (password + TOTP MFA). Privilege: read:ai-data (user) or write:admin (admin role).", "outOfScope": false, "reasonOutOfScope": "", "providesAuthentication": false, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 220, "y": 90 },
+            "size": { "width": 120, "height": 120 },
+            "attrs": { "text": { "text": "User Interface" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000002",
+            "data": { "type": "tm.Process", "name": "User Interface", "description": "Browser chat UI (Regular Web App client).", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": false, "isWebApplication": true, "privilegeLevel": "User", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 110, "y": 370 },
+            "size": { "width": 160, "height": 70 },
+            "attrs": { "text": { "text": "Auth0 Tenant" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000003",
+            "data": { "type": "tm.Actor", "name": "Auth0 Tenant", "description": "Identity provider: OIDC Authorization Code + PKCE for users, Client Credentials for M2M clients, RS256-signed tokens.", "outOfScope": false, "reasonOutOfScope": "", "providesAuthentication": true, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 430, "y": 100 },
+            "size": { "width": 130, "height": 130 },
+            "attrs": { "text": { "text": "Chatbot Backend Endpoint" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000004",
+            "data": { "type": "tm.Process", "name": "Chatbot Backend Endpoint", "description": "Confidential OIDC client / BFF. Validates tokens, holds user session, enforces RBAC.", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": false, "isWebApplication": true, "privilegeLevel": "Service", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 760, "y": 140 },
+            "size": { "width": 140, "height": 140 },
+            "attrs": { "text": { "text": "AI Chatbot Harness" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000005",
+            "data": { "type": "tm.Process", "name": "AI Chatbot Harness", "description": "LLM agent. Identities: agent_id, OAuth M2M client (client credentials), LLM API key holder.", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": false, "isWebApplication": false, "privilegeLevel": "Agent (M2M scoped)", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 420, "y": 470 },
+            "size": { "width": 160, "height": 80 },
+            "attrs": { "text": { "text": "Secrets Manager" }, "topLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null }, "bottomLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000006",
+            "data": { "type": "tm.Store", "name": "Secrets Manager", "description": "Holds M2M client credential and LLM API key.", "outOfScope": false, "reasonOutOfScope": "", "isALog": false, "isEncrypted": true, "isSigned": false, "storesCredentials": true, "storesInventory": false, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 640, "y": 470 },
+            "size": { "width": 160, "height": 80 },
+            "attrs": { "text": { "text": "Chat Session DB" }, "topLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null }, "bottomLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000007",
+            "data": { "type": "tm.Store", "name": "Chat Session DB", "description": "Sessions and chat transcripts (may contain PII).", "outOfScope": false, "reasonOutOfScope": "", "isALog": false, "isEncrypted": true, "isSigned": false, "storesCredentials": false, "storesInventory": false, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 750, "y": 690 },
+            "size": { "width": 160, "height": 70 },
+            "attrs": { "text": { "text": "LLM Provider" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000008",
+            "data": { "type": "tm.Actor", "name": "LLM Provider", "description": "External model API authenticated with a static LLM API key.", "outOfScope": false, "reasonOutOfScope": "", "providesAuthentication": false, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 1145, "y": 95 },
+            "size": { "width": 130, "height": 130 },
+            "attrs": { "text": { "text": "Internal REST APIs" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000009",
+            "data": { "type": "tm.Process", "name": "Internal REST APIs", "description": "Resource server. Scopes: read:ai-data (user), write:admin (admin).", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": true, "isWebApplication": true, "privilegeLevel": "Resource server", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 1440, "y": 95 },
+            "size": { "width": 130, "height": 130 },
+            "attrs": { "text": { "text": "RAG Service" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000010",
+            "data": { "type": "tm.Process", "name": "RAG Service", "description": "Retrieval service. Identity: RAG pipeline service identity (read on vector store).", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": false, "isWebApplication": false, "privilegeLevel": "Service", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 1650, "y": 120 },
+            "size": { "width": 180, "height": 80 },
+            "attrs": { "text": { "text": "Vector Store" }, "topLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null }, "bottomLine": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000011",
+            "data": { "type": "tm.Store", "name": "Vector Store", "description": "Embedded knowledge-base chunks with provenance metadata.", "outOfScope": false, "reasonOutOfScope": "", "isALog": false, "isEncrypted": true, "isSigned": false, "storesCredentials": false, "storesInventory": false, "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 1440, "y": 360 },
+            "size": { "width": 130, "height": 130 },
+            "attrs": { "text": { "text": "Embedding Service" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000012",
+            "data": { "type": "tm.Process", "name": "Embedding Service", "description": "Stateless text-to-vector transform.", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": false, "isWebApplication": false, "privilegeLevel": "Service", "hasOpenThreats": false, "threats": [] }
+          },
+          {
+            "position": { "x": 1145, "y": 375 },
+            "size": { "width": 130, "height": 130 },
+            "attrs": { "text": { "text": "MCP Server" }, "body": { "stroke": "#333333", "strokeWidth": 1.5, "strokeDasharray": null } },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "id": "c0000000-0000-4000-8000-000000000013",
+            "data": { "type": "tm.Process", "name": "MCP Server", "description": "Tool server. Identity: MCP server identity (dedicated M2M client).", "outOfScope": false, "reasonOutOfScope": "", "handlesCardPayment": false, "handlesGoodsOrServices": true, "isWebApplication": false, "privilegeLevel": "Tool (M2M scoped)", "hasOpenThreats": false, "threats": [] }
+          },
+
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000001",
+            "labels": ["F01 User interaction"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000001" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000002" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F01 User interaction", "description": "Human user enters prompts and login credentials in the browser. Inside TB1.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "Local UI", "isBidirectional": true, "isEncrypted": false, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000011", "number": 1, "title": "T-F01-S Phishing / look-alike UI", "type": "Spoofing", "status": "Open", "severity": "Medium", "description": "Phishing or look-alike chat UI harvests user password and TOTP; attacker then logs in as the user.", "mitigation": "Credentials only on Auth0 Universal Login; TOTP MFA; brute-force protection; Suspicious IP Throttling; custom domain; awareness.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000012", "number": 2, "title": "T-F01-T XSS / extension alters input", "type": "Tampering", "status": "Open", "severity": "Medium", "description": "XSS or malicious browser extension modifies chat input or submits injected prompts in the user's name.", "mitigation": "Strict CSP (no inline script), SRI, output encoding, Trusted Types.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000013", "number": 3, "title": "T-F01-R User denies prompt", "type": "Repudiation", "status": "Open", "severity": "Low", "description": "User denies typing a harmful prompt that triggered an agent action.", "mitigation": "Server-side attribution on F04 (sub, session id, prompt hash, timestamp).", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000014", "number": 4, "title": "T-F01-I Tokens in browser storage", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Tokens in localStorage or chat content on shared device readable by XSS or next user.", "mitigation": "BFF pattern - tokens server-side, HttpOnly cookies, idle auto-logout, no sensitive browser storage.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000015", "number": 5, "title": "T-F01-D N/A", "type": "Denial of service", "status": "NotApplicable", "severity": "Low", "description": "N/A - interaction is local to the user's own device; no shared resource is consumed. Service-level DoS is assessed on F02 and F04.", "mitigation": "", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000016", "number": 6, "title": "T-F01-E N/A", "type": "Elevation of privilege", "status": "NotApplicable", "severity": "Low", "description": "N/A - no privilege boundary is crossed; the user acts with their own rights. Escalation is assessed on F04, F05 and F08.", "mitigation": "", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000002",
+            "labels": ["F02 OIDC authorize with PKCE / code callback"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000002" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000003" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F02 OIDC authorize with PKCE / code callback", "description": "Browser redirect to Auth0 /authorize (code_challenge S256, state, nonce) and callback with code. Crosses TB1 -> TB2.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS / OIDC", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": true, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000021", "number": 7, "title": "T-F02-S Login CSRF / callback injection", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Attacker injects their authorization code into the victim browser, or an open redirect delivers the code to an attacker URL.", "mitigation": "Exact-match Allowed Callback URLs; state and nonce validation; HTTPS only; no wildcard redirect URIs.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000022", "number": 8, "title": "T-F02-T PKCE downgrade / scope tampering", "type": "Tampering", "status": "Open", "severity": "High", "description": "Authorize request tampered: code_challenge stripped, redirect_uri altered, or write:admin added to scope.", "mitigation": "Require PKCE S256; scopes granted by Auth0 RBAC not client request; write:admin only for admin role.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000023", "number": 9, "title": "T-F02-R Disputed login/MFA", "type": "Repudiation", "status": "Open", "severity": "Low", "description": "User disputes a login or MFA event.", "mitigation": "Stream Auth0 tenant logs (login success/fail, MFA enrol/challenge) to SIEM with retention.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000024", "number": 10, "title": "T-F02-I Authorization code leakage", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Authorization code leaks via Referer, browser history or proxy logs.", "mitigation": "Single-use short-lived codes; PKCE renders leaked code useless; Referrer-Policy no-referrer; response_mode=form_post.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000025", "number": 11, "title": "T-F02-D Credential stuffing lockout", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Credential stuffing or login floods lock out legitimate users and exhaust Auth0 rate limits.", "mitigation": "Brute-force protection (10 attempts, 15 min block); Suspicious IP Throttling; Bot Detection.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000026", "number": 12, "title": "T-F02-E MFA bypass / role escalation at signup", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "MFA bypass, or self-signup / account linking path yields elevated roles.", "mitigation": "MFA enforced for all users; disable public signup or default user role; admin roles assigned only by tenant admins.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000003",
+            "labels": ["F03 Authorization code, verifier; ID/access tokens"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000003" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000004" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F03 Authorization code, verifier; ID/access tokens", "description": "Back-channel /oauth/token exchange (code + code_verifier + client auth) returning RS256 ID and access tokens. Crosses TB2 -> TB3.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS / OAuth 2.0", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": true, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000031", "number": 13, "title": "T-F03-S Forged or wrong-audience token", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Backend accepts forged token (alg=none, HS/RS key confusion) or one issued for another tenant/audience.", "mitigation": "Verify RS256 via Auth0 JWKS; pin algorithm; validate iss, aud, exp, nbf and ID-token nonce.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000032", "number": 14, "title": "T-F03-T JWT claim tampering", "type": "Tampering", "status": "Open", "severity": "High", "description": "JWT claims (scope, agent_id, roles) modified to gain access.", "mitigation": "Use claims only after signature verification; reject unsigned tokens and unknown kid.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000033", "number": 15, "title": "T-F03-R Token issuance not provable", "type": "Repudiation", "status": "Open", "severity": "Low", "description": "Cannot prove which token was issued to which session or client.", "mitigation": "Correlate Auth0 code-exchange logs with backend logs by sub, client_id, jti and session id.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000034", "number": 16, "title": "T-F03-I Client secret / token in logs", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Client secret or tokens written to application logs; ID token over-shares PII.", "mitigation": "Client secret in Secrets Manager; scrub Authorization headers and tokens from logs; minimal claims; TLS 1.2+.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000035", "number": 17, "title": "T-F03-D IdP / JWKS unavailability", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Auth0 outage, rate limiting or JWKS fetch failure blocks all logins and token validation.", "mitigation": "JWKS caching with refresh-on-unknown-kid; retries with backoff; fail closed with clear error.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000036", "number": 18, "title": "T-F03-E ID token used as access token / long TTL", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "ID token accepted as an API access token, or long-lived tokens extend attack window.", "mitigation": "APIs accept only access tokens with correct aud; access-token TTL 300 s; refresh token rotation with reuse detection.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000004",
+            "labels": ["F04 Chat request: session cookie; response"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000002" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000004" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F04 Chat request: session cookie; response", "description": "Authenticated chat request from browser to backend. Crosses TB1 -> TB3 (user layer to application/agent layer).",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": true, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000041", "number": 19, "title": "T-F04-S Session hijack / CSRF", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Stolen session cookie replayed, or CSRF sends chat requests as the victim.", "mitigation": "HttpOnly, Secure, SameSite=Strict cookies; anti-CSRF token; session rotation on login; short idle/absolute timeouts.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000042", "number": 20, "title": "T-F04-T Identity field / direct prompt injection", "type": "Tampering", "status": "Open", "severity": "High", "description": "Client injects role/user_id fields in the body or direct prompt-injection content.", "mitigation": "Derive identity only from server session; ignore client identity fields; schema validation; input guardrails.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000043", "number": 21, "title": "T-F04-R User denies prompt", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "User denies sending the prompt that led to an agent action.", "mitigation": "Tamper-evident audit log of sub, session id, request id, prompt hash and timestamp.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000044", "number": 22, "title": "T-F04-I IDOR / secret leakage in responses", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "IDOR on conversation id exposes another user's chat; verbose errors or model output leak secrets.", "mitigation": "Conversation ownership check; generic errors; output guardrail redacting JWT-shaped strings.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000045", "number": 23, "title": "T-F04-D Prompt flooding / denial of wallet", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Prompt flooding or oversized prompts exhaust LLM budget.", "mitigation": "Per-user rate limits; max input tokens; WAF; request body size limits.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000046", "number": 24, "title": "T-F04-E User reaches admin function", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "User-level session reaches admin functions via hidden endpoints or by asking the agent to act as admin.", "mitigation": "Server-side RBAC (read:ai-data vs write:admin, 403 on mismatch); agent never exceeds calling user's privilege.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000005",
+            "labels": ["F05 Request + validated user context / response"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000004" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F05 Request + validated user context / response", "description": "Backend forwards prompt plus verified user context (sub, roles) to the agent harness. Crosses TB3 -> TB4.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS (internal)", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000051", "number": 25, "title": "T-F05-S Direct call with forged user context", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Attacker bypasses backend and calls the harness directly with a forged user context.", "mitigation": "Network policy (backend-only ingress); mTLS or Ed25519-signed context envelope verified by harness.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000052", "number": 26, "title": "T-F05-T User context / system prompt override", "type": "Tampering", "status": "Open", "severity": "High", "description": "User context altered in transit, or user text mixed into the prompt overrides system instructions.", "mitigation": "Signed structured context separate from prompt; immutable system prompt; input guardrails.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000053", "number": 27, "title": "T-F05-R Agent action not linked to user", "type": "Repudiation", "status": "Open", "severity": "High", "description": "Agent actions cannot be traced back to the originating user (confused-deputy audit gap).", "mitigation": "Propagate request id, user sub and agent_id to every downstream call and log at each hop.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000054", "number": 28, "title": "T-F05-I System prompt extraction (LLM07)", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "System prompt or embedded credentials extracted and returned to the user.", "mitigation": "No secrets in system prompt; output guardrail; canary strings to detect leakage.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000055", "number": 29, "title": "T-F05-D Agent loop exhaustion", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Recursive reasoning or tool-call loops consume compute and tokens.", "mitigation": "Max agent steps; per-request timeout; per-conversation token budget.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000056", "number": 30, "title": "T-F05-E Confused deputy via agent privileges", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Agent acts with its own M2M privileges instead of the user's, giving users indirect access.", "mitigation": "Authorize against intersection of user and agent scope; token exchange / on-behalf-of with act claim.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000006",
+            "labels": ["F06 Read/write session data"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000004" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000007" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F06 Read/write session data", "description": "Backend reads and writes sessions and chat history using its DB service identity. Inside TB3.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "TLS DB protocol", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000061", "number": 31, "title": "T-F06-S Shared DB credentials", "type": "Spoofing", "status": "Open", "severity": "Medium", "description": "Another service connects with shared DB credentials, impersonating the backend.", "mitigation": "Per-service DB identity (IAM auth); network ACLs; no shared DB accounts.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000062", "number": 32, "title": "T-F06-T Chat memory poisoning", "type": "Tampering", "status": "Open", "severity": "Medium", "description": "Stored chat history modified to plant persistent prompt injection.", "mitigation": "Backend-only write; parameterized queries; treat history as untrusted on re-prompt; record integrity hash.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000063", "number": 33, "title": "T-F06-R Untraced history changes", "type": "Repudiation", "status": "Open", "severity": "Low", "description": "Deletion or modification of chat history without trace.", "mitigation": "DB audit logging; append-only audit table.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000064", "number": 34, "title": "T-F06-I Transcript / PII exposure", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "Transcripts containing PII or tokens exposed via DB breach or backups.", "mitigation": "Encryption at rest; redact tokens before persistence; retention limits; per-user row-level access.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000065", "number": 35, "title": "T-F06-D Storage exhaustion", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Very large transcripts or abusive volume exhaust storage.", "mitigation": "Message size caps; per-user quotas; retention purge jobs.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000066", "number": 36, "title": "T-F06-E SQL injection to DB admin", "type": "Elevation of privilege", "status": "Open", "severity": "Medium", "description": "SQL injection through chat content yields DB admin rights.", "mitigation": "Parameterized queries; least-privilege DB role (DML only, no DDL).", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000007",
+            "labels": ["F07 M2M credential + LLM API key"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000006" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F07 M2M credential + LLM API key", "description": "Harness retrieves its M2M client credential and LLM API key from Secrets Manager. Crosses TB3 -> TB4.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS (internal)", "isBidirectional": false, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000071", "number": 37, "title": "T-F07-S Workload impersonation to read secrets", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Another workload impersonates the harness to read its secrets.", "mitigation": "Workload identity (cloud IAM role / SPIFFE); per-secret access policy bound to harness identity only.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000072", "number": 38, "title": "T-F07-T Secret value substitution", "type": "Tampering", "status": "Open", "severity": "Medium", "description": "Secret replaced with attacker-controlled value (e.g. routes LLM traffic to attacker account).", "mitigation": "Restricted write access; secret versioning; alert on every secret change.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000073", "number": 39, "title": "T-F07-R Secret access not logged", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "No record of who read or rotated a secret.", "mitigation": "Secrets Manager access logs forwarded to SIEM.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000074", "number": 40, "title": "T-F07-I LLM API key exfiltration via prompt injection", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "LLM API key or M2M secret loaded into env vars or prompt context and exfiltrated via prompt injection (Attack Tree 1).", "mitigation": "Never place secrets in model context (HTTP client only); short-lived M2M tokens; rotation at most 90 days; output redaction.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000075", "number": 41, "title": "T-F07-D Secrets Manager unavailable", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Secrets Manager unavailable, so the agent cannot authenticate.", "mitigation": "In-memory cache with TTL; HA secrets service; alerting.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000076", "number": 42, "title": "T-F07-E Wildcard secret read", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Harness has wildcard read on all secrets; one compromise exposes every credential.", "mitigation": "Least-privilege policy per secret path; quarterly access review.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000008",
+            "labels": ["F08 M2M token + least-privilege scope / API response"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000009" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F08 M2M token + least-privilege scope / API response", "description": "Agent calls internal APIs with an Auth0 client-credentials access token. Crosses TB4 -> TB5 (agent layer to internal API layer).",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS / OAuth 2.0 Bearer", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000081", "number": 43, "title": "T-F08-S Stolen M2M token / agent spoofing", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Stolen M2M token or client secret used to impersonate the agent (Attack Tree 2).", "mitigation": "TTL 60-300 s; private_key_jwt or mTLS sender-constrained tokens; source IP allow-list; alert on token reuse after expiry.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000082", "number": 44, "title": "T-F08-T Injected agent alters API parameters", "type": "Tampering", "status": "Open", "severity": "High", "description": "Prompt-injected agent tampers with API parameters (e.g. customer id, amount).", "mitigation": "Server-side per-object authorization against propagated user context; strict parameter validation.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000083", "number": 45, "title": "T-F08-R Agent-on-behalf-of not attributable", "type": "Repudiation", "status": "Open", "severity": "High", "description": "API cannot distinguish agent acting for user A vs user B.", "mitigation": "Log client_id, agent_id, user sub (act claim), scope and request id on every call.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000084", "number": 46, "title": "T-F08-I Excessive API data into LLM", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "API returns more data than needed, which then flows into the LLM.", "mitigation": "Field-level filtering; data minimization; scope-based response shaping.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000085", "number": 47, "title": "T-F08-D Agent call volume spike", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Agent call volume spike overwhelms internal APIs.", "mitigation": "Per-client rate limits; alert on more than 20 requests in 60 s.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000086", "number": 48, "title": "T-F08-E Over-scoped M2M client / scope change", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Agent M2M client granted write:admin, or scope changes between consecutive requests.", "mitigation": "M2M grant limited to required scopes; API enforces scope; alert on scope change.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000009",
+            "labels": ["F09 Prompt over TLS + key in auth header / model response"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000008" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F09 Prompt over TLS + key in auth header / model response", "description": "Harness sends prompts to the external LLM authenticated with the LLM API key. Crosses TB4 -> TB8.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": true, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000091", "number": 49, "title": "T-F09-S Fake LLM endpoint / stolen key", "type": "Spoofing", "status": "Open", "severity": "Medium", "description": "DNS/proxy misconfiguration routes prompts to a fake endpoint, or a stolen key impersonates SecureNova to the provider.", "mitigation": "TLS certificate validation; fixed provider hostname; egress allow-list; provider-side key restrictions.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000092", "number": 50, "title": "T-F09-T Response tampering in transit", "type": "Tampering", "status": "Open", "severity": "Low", "description": "Man-in-the-middle alters model responses.", "mitigation": "TLS 1.2+; treat model output as untrusted; validate proposed tool calls.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000093", "number": 51, "title": "T-F09-R LLM usage not attributable", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "Cannot attribute LLM usage or cost to a user or agent.", "mitigation": "Per-environment keys; request id and user tag in provider metadata; usage logs to SIEM.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000094", "number": 52, "title": "T-F09-I Sensitive data to third-party LLM", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "Prompts carry PII, tokens or system prompt to a third party that may retain them.", "mitigation": "Pre-send redaction and data minimization; zero-retention / DPA with provider.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000095", "number": 53, "title": "T-F09-D Quota exhaustion / denial of wallet", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Provider rate-limit or quota exhaustion through abuse.", "mitigation": "Spend budgets and quotas; circuit breaker; fallback model.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000096", "number": 54, "title": "T-F09-E Excessive agency from model output", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Model output instructs the harness to call privileged tools or APIs (LLM06).", "mitigation": "Per-role tool allow-list; policy engine outside the LLM; human approval for privileged actions.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000010",
+            "labels": ["F10 Query with agent identity / retrieved text"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000010" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F10 Query with agent identity / retrieved text", "description": "Agent queries the RAG service and receives retrieved chunks. Crosses TB4 -> TB6.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS (internal)", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000101", "number": 55, "title": "T-F10-S Unauthenticated / spoofed RAG query", "type": "Spoofing", "status": "Open", "severity": "Medium", "description": "Unauthenticated caller queries RAG directly, or harness claims another user's identity to obtain their documents.", "mitigation": "RAG requires agent workload token; per-user ACL filters derived only from verified context.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000102", "number": 56, "title": "T-F10-T Retrieval steering / chunk alteration", "type": "Tampering", "status": "Open", "severity": "Medium", "description": "Queries crafted to retrieve poisoned chunks, or retrieved text altered in transit.", "mitigation": "TLS; provenance-tagged, hash-verified chunks; content sanitization.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000103", "number": 57, "title": "T-F10-R Chunk influence not recorded", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "No record of which chunks influenced an answer or action.", "mitigation": "Log chunk id, source document and version per request.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000104", "number": 58, "title": "T-F10-I Cross-user document leakage", "type": "Information disclosure", "status": "Open", "severity": "High", "description": "Cross-user or cross-tenant document leakage via semantic search.", "mitigation": "Document-level ACL enforced at retrieval via metadata filters, never only in the prompt.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000105", "number": 59, "title": "T-F10-D Expensive retrieval queries", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Expensive queries (large top-k, long text) degrade the service.", "mitigation": "Cap top-k and query length; timeouts; rate limits.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000106", "number": 60, "title": "T-F10-E Indirect prompt injection via retrieved chunk", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Retrieved chunk carries instructions the agent follows to escalate actions (Attack Tree 3).", "mitigation": "Treat chunks as data (spotlighting/delimiters); guardrails on retrieved text; privileged actions require authorization outside the LLM.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000011",
+            "labels": ["F11 Embedding request / response"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000010" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000012" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F11 Embedding request / response", "description": "RAG service sends text to the embedding service and receives vectors. Inside TB6.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS (internal)", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000111", "number": 61, "title": "T-F11-S Rogue embedding endpoint", "type": "Spoofing", "status": "Open", "severity": "Low", "description": "A rogue embedding endpoint is substituted.", "mitigation": "Fixed endpoint configuration; mTLS or API-key service auth.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000112", "number": 62, "title": "T-F11-T Embedding manipulation", "type": "Tampering", "status": "Open", "severity": "Low", "description": "Embedding vectors or model version manipulated to steer retrieval.", "mitigation": "Pinned model version; integrity-checked deployment; TLS.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000113", "number": 63, "title": "T-F11-R Embedding version untracked", "type": "Repudiation", "status": "Open", "severity": "Low", "description": "Cannot determine which embedding model version indexed a chunk.", "mitigation": "Record embedding model id and version with every indexed chunk.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000114", "number": 64, "title": "T-F11-I Document text to third-party embedder", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Document text sent to a third-party embedding API.", "mitigation": "Self-hosted or approved provider; redact sensitive fields before embedding.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000115", "number": 65, "title": "T-F11-D Embedding service outage", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Embedding service outage blocks retrieval and ingestion.", "mitigation": "Retries; query-embedding cache; ingestion queue.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000116", "number": 66, "title": "T-F11-E N/A", "type": "Elevation of privilege", "status": "NotApplicable", "severity": "Low", "description": "N/A - the embedding service is a stateless transform that only returns vectors; it makes no authorization decisions and exposes no privileged operations.", "mitigation": "", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000012",
+            "labels": ["F12 Scoped search / retrieved chunks"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000010" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000011" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F12 Scoped search / retrieved chunks", "description": "RAG service runs ACL-scoped similarity search against the vector store. Inside TB6.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "TLS DB protocol", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000121", "number": 67, "title": "T-F12-S Unauthorized chunk writer", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Unauthorized writer impersonates the ingestion pipeline to insert chunks.", "mitigation": "Separate read (query) and write (ingestion) identities; authentication enforced on vector DB.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000122", "number": 68, "title": "T-F12-T RAG chunk poisoning", "type": "Tampering", "status": "Open", "severity": "High", "description": "Malicious instructions inserted or modified in the store (Attack Tree 3).", "mitigation": "Ingestion review and content scanning; signed chunk hashes verified at retrieval; provenance metadata.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000123", "number": 69, "title": "T-F12-R Chunk authorship unknown", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "Cannot determine who inserted or changed a chunk.", "mitigation": "Store author, source and ingest time per chunk; audit logs on writes.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000124", "number": 70, "title": "T-F12-I Vector store exposure / inversion", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Vector store exposed, or embeddings inverted to reconstruct source text.", "mitigation": "Private network; authentication; encryption at rest.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000125", "number": 71, "title": "T-F12-D Index deletion / corruption", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Index deletion or corruption.", "mitigation": "Snapshots and backups; restricted delete rights; tested restore.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000126", "number": 72, "title": "T-F12-E Query identity has write/admin rights", "type": "Elevation of privilege", "status": "Open", "severity": "Medium", "description": "RAG query identity holds write or admin rights on the store.", "mitigation": "Read-only role for the query path; write only for ingestion identity.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000013",
+            "labels": ["F13 Tool request with agent identity / result"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000005" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000013" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F13 Tool request with agent identity / result", "description": "Agent invokes MCP tools, authenticating with its agent identity. Crosses TB4 -> TB7.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "MCP over HTTPS", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000131", "number": 73, "title": "T-F13-S Rogue MCP server / tool shadowing", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Rogue or look-alike MCP server/tool registered, or a caller impersonates the agent to MCP.", "mitigation": "MCP server allow-list with pinned identity (mTLS/OAuth); agent authenticates with signed audience-bound token.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000132", "number": 74, "title": "T-F13-T Tool manifest / argument tampering", "type": "Tampering", "status": "Open", "severity": "High", "description": "Tool description poisoning, or tool arguments altered by injected content.", "mitigation": "Pin and hash tool manifests; JSON-schema argument validation; Ed25519-signed agent messages.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000133", "number": 75, "title": "T-F13-R Tool invocation not attributable", "type": "Repudiation", "status": "Open", "severity": "High", "description": "Tool invocation cannot be attributed to an agent or user.", "mitigation": "Log tool name, argument hash, agent_id, user sub, request id and result.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000134", "number": 76, "title": "T-F13-I Secrets in tool results / logs", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "Tool results containing secrets flow back into LLM context, or MCP server logs tokens.", "mitigation": "Tool result filtering and redaction; no token passthrough.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000135", "number": 77, "title": "T-F13-D Hanging tools", "type": "Denial of service", "status": "Open", "severity": "Low", "description": "Long-running or hanging tools block the agent.", "mitigation": "Per-tool timeouts; concurrency caps.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000136", "number": 78, "title": "T-F13-E Poisoned chunk triggers privileged tool", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "Poisoned RAG chunk triggers a privileged MCP tool (e.g. refund, delete).", "mitigation": "Per-tool scopes; deny by default; human-in-the-loop approval for destructive tools.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": { "line": { "stroke": "#333333", "targetMarker": { "name": "block" }, "sourceMarker": { "name": "" }, "strokeDasharray": null } },
+            "width": 200, "height": 100, "zIndex": 10, "connector": "smooth",
+            "id": "f0000000-0000-4000-8000-000000000014",
+            "labels": ["F14 Tool call with MCP identity / tool result"],
+            "source": { "cell": "c0000000-0000-4000-8000-000000000013" },
+            "target": { "cell": "c0000000-0000-4000-8000-000000000009" },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow", "name": "F14 Tool call with MCP identity / tool result", "description": "MCP server calls internal APIs with its own M2M identity. Crosses TB7 -> TB5.",
+              "outOfScope": false, "reasonOutOfScope": "", "protocol": "HTTPS / OAuth 2.0 Bearer", "isBidirectional": true, "isEncrypted": true, "isPublicNetwork": false, "hasOpenThreats": true,
+              "threats": [
+                { "id": "e0000000-0000-4000-8000-000000000141", "number": 79, "title": "T-F14-S Static MCP credential theft", "type": "Spoofing", "status": "Open", "severity": "High", "description": "MCP server uses shared or static credentials; stolen credentials impersonate MCP.", "mitigation": "Dedicated M2M client for MCP; short-TTL sender-constrained tokens.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000142", "number": 80, "title": "T-F14-T MCP rewrites requests", "type": "Tampering", "status": "Open", "severity": "Medium", "description": "MCP rewrites requests beyond what the agent asked.", "mitigation": "API validates against propagated user/agent context; signed requests.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000143", "number": 81, "title": "T-F14-R Actor chain lost at API", "type": "Repudiation", "status": "Open", "severity": "High", "description": "API logs show only MCP identity; the user-agent-tool chain is lost.", "mitigation": "Propagate actor chain (RFC 8693 act claim) and request id; log at the API.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000144", "number": 82, "title": "T-F14-I Excess data to MCP", "type": "Information disclosure", "status": "Open", "severity": "Medium", "description": "API returns more data than the MCP tool needs.", "mitigation": "Data minimization; scope-limited fields.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000145", "number": 83, "title": "T-F14-D Tool call storm", "type": "Denial of service", "status": "Open", "severity": "Medium", "description": "Tool-call storm overloads internal APIs.", "mitigation": "Per-MCP-client rate limits; circuit breaker.", "modelType": "STRIDE", "new": false, "score": "" },
+                { "id": "e0000000-0000-4000-8000-000000000146", "number": 84, "title": "T-F14-E Token passthrough / confused deputy", "type": "Elevation of privilege", "status": "Open", "severity": "High", "description": "MCP forwards the agent's token or uses its own broader rights to act beyond the caller's privilege.", "mitigation": "No token passthrough; MCP obtains audience-specific token via token exchange with scopes no wider than the caller.", "modelType": "STRIDE", "new": false, "score": "" }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 84
+  }
+}
