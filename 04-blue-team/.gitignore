@@ -1,0 +1,4 @@
+__pycache__/
+.env
+# Ed25519 private keys must never be committed (public keys are fine to share).
+keys/*_private.pem

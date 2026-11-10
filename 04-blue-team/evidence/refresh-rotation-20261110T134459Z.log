@@ -1,0 +1,10 @@
+[2026-11-10T13:44:59.383+00:00] [INFO ] === Auth0 hardening: access token TTL + refresh token rotation ===
+[2026-11-10T13:44:59.383+00:00] [INFO ] Tenant=sapphire-hookworm-42444.cic-demo-platform.auth0app.com client=B4JywsrZbzfCMB50dTMOvvkmBn4iuG12 audience=https://api.securenova.local/
+[2026-11-10T13:44:59.383+00:00] [INFO ] Step 1 - Authorization Code + PKCE login (S256). Open this URL in a browser and sign in:
+[2026-11-10T13:46:59.816+00:00] [INFO ] Authorization code received (state verified), fingerprint 4f30a0d97a35c578
+[2026-11-10T13:46:59.816+00:00] [INFO ] POST https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/oauth/token (grant_type=authorization_code)
+[2026-11-10T13:47:00.295+00:00] [INFO ] Auth0 responded: HTTP 200
+[2026-11-10T13:47:00.295+00:00] [INFO ] Access token: alg=RS256 iss=https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/ aud=['https://api.securenova.local/', 'https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/userinfo']
+[2026-11-10T13:47:00.295+00:00] [INFO ] Access token: scope='openid profile email' iat=2026-11-10T13:47:00+00:00 exp=2026-11-10T13:52:00+00:00
+[2026-11-10T13:47:00.295+00:00] [PASS ] Access token TTL = exp - iat = 300 s (expected 300 s) -> PASS
+[2026-11-10T13:47:00.295+00:00] [ERROR] No refresh token returned. Enable 'Allow Offline Access' on the API and request offline_access.

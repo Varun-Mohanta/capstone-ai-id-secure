@@ -1,0 +1,21 @@
+cryptography 50.0.2 - Ed25519PrivateKey.generate()
+Key directory: /workspaces/capstone-ai-id-secure/04-blue-team/keys
+
+[SKIP] /workspaces/capstone-ai-id-secure/04-blue-team/keys/orchestrator-01_ed25519_private.pem already exists (use --force to rotate)
+[OK] orchestrator-01  key pair existing | SHA256:CTYQi7pWzNup7ECHJksPRNR1cYU2U6bzSgjFh1x4jxI
+     -rw-------  119 B  04-blue-team/keys/orchestrator-01_ed25519_private.pem
+     -rw-rw-rw-  113 B  04-blue-team/keys/orchestrator-01_ed25519_public.pem
+     MCowBQYDK2VwAyEAjllig17icjHeiQ3RAI2OAM05FYWxvtebRwuEAwt7Cfc=  (public key, base64 SPKI)
+
+[SKIP] /workspaces/capstone-ai-id-secure/04-blue-team/keys/research-agent_ed25519_private.pem already exists (use --force to rotate)
+[OK] research-agent   key pair existing | SHA256:vJtk0jdqq8qbJyPypiSFAXA0COQF6e0GOVdCkVNMAtM
+     -rw-------  119 B  04-blue-team/keys/research-agent_ed25519_private.pem
+     -rw-rw-rw-  113 B  04-blue-team/keys/research-agent_ed25519_public.pem
+     MCowBQYDK2VwAyEAUgSeAmntzWGgYl55vZsSyfsFWzJPlUMEYGFz2Dpl5hg=  (public key, base64 SPKI)
+
+[SKIP] /workspaces/capstone-ai-id-secure/04-blue-team/keys/ops-agent_ed25519_private.pem already exists (use --force to rotate)
+[OK] ops-agent        key pair existing | SHA256:mvgV+AKfhilCNFesXOYoY55EsxxDE6lC+EVTrcs6FuA
+     -rw-------  119 B  04-blue-team/keys/ops-agent_ed25519_private.pem
+     -rw-rw-rw-  113 B  04-blue-team/keys/ops-agent_ed25519_public.pem
+     MCowBQYDK2VwAyEA2gnipouA9VHKDnhKC89KTM4gc+ucIomcPX/Zo16Y9Dg=  (public key, base64 SPKI)
+

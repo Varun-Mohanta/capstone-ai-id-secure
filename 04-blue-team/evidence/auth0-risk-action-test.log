@@ -1,0 +1,16 @@
+ALLOW user=auth0|alice score=0 reasons=none
+PASS | Normal login from GB                     | expected=ALLOW actual=ALLOW
+ALLOW user=auth0|alice score=10 reasons=scripted user agent
+PASS | Login from US with curl user agent       | expected=ALLOW actual=ALLOW
+ALLOW user=auth0|alice score=40 reasons=country RU not in allow-list
+PASS | Foreign country only (RU)                | expected=ALLOW actual=ALLOW
+DENY user=auth0|alice ip=5.8.18.1 score=70 reasons=country RU not in allow-list; admin scope from non-allowed country
+PASS | Foreign country + admin scope            | expected=DENY actual=DENY | Login blocked by SecureNova risk policy (score 70). Contact security@securenova.ai.
+DENY user=auth0|alice ip=5.8.18.1 score=80 reasons=country KP not in allow-list; Auth0 risk assessment confidence=low
+PASS | Foreign country + low Auth0 confidence   | expected=DENY actual=DENY | Login blocked by SecureNova risk policy (score 80). Contact security@securenova.ai.
+DENY user=auth0|alice ip=203.0.113.66 score=100 reasons=Auth0 risk assessment confidence=low; IP 203.0.113.66 on blocklist; impossible travel / new device; scripted user agent
+PASS | Blocklisted IP + bot UA + new device     | expected=DENY actual=DENY | Login blocked by SecureNova risk policy (score 100). Contact security@securenova.ai.
+DENY user=auth0|novaassist-01 reason=agent identity used interactive login
+PASS | Agent identity using interactive login   | expected=DENY actual=DENY | AI agent identities must use the client-credentials flow, not interactive login.
+
+7/7 risk-policy cases passed

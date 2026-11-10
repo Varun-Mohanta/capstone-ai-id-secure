@@ -1,0 +1,32 @@
+[2026-11-10T15:57:56.073+00:00] [INFO ] === Auth0 hardening: access token TTL + refresh token rotation ===
+[2026-11-10T15:57:56.073+00:00] [INFO ] Tenant=sapphire-hookworm-42444.cic-demo-platform.auth0app.com client=B4JywsrZbzfCMB50dTMOvvkmBn4iuG12 audience=https://api.securenova.local/
+[2026-11-10T15:57:56.073+00:00] [INFO ] Step 1 - Authorization Code + PKCE login (S256). Open this URL in a browser and sign in:
+[2026-11-10T15:59:10.064+00:00] [INFO ] Authorization code received (state verified), fingerprint eb12cdeb822a4446
+[2026-11-10T15:59:10.064+00:00] [INFO ] POST https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/oauth/token (grant_type=authorization_code)
+[2026-11-10T15:59:10.507+00:00] [INFO ] Auth0 responded: HTTP 200
+[2026-11-10T15:59:10.507+00:00] [INFO ] Access token: alg=RS256 iss=https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/ aud=['https://api.securenova.local/', 'https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/userinfo']
+[2026-11-10T15:59:10.507+00:00] [INFO ] Access token: scope='openid profile email offline_access' iat=2026-11-10T15:59:10+00:00 exp=2026-11-10T16:04:10+00:00
+[2026-11-10T15:59:10.507+00:00] [PASS ] Access token TTL = exp - iat = 300 s (expected 300 s) -> PASS
+[2026-11-10T15:59:10.508+00:00] [INFO ] RT1 obtained, fingerprint cfbd27862e82d254
+[2026-11-10T15:59:10.508+00:00] [INFO ] Step 2 - Rotate: exchange RT1 for new tokens
+[2026-11-10T15:59:10.508+00:00] [INFO ] [RT1 first use] using refresh token fp=cfbd27862e82d254
+[2026-11-10T15:59:10.508+00:00] [INFO ] POST https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/oauth/token (grant_type=refresh_token)
+[2026-11-10T15:59:11.400+00:00] [INFO ] Auth0 responded: HTTP 200
+[2026-11-10T15:59:11.400+00:00] [INFO ] Access token: alg=RS256 iss=https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/ aud=['https://api.securenova.local/', 'https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/userinfo']
+[2026-11-10T15:59:11.400+00:00] [INFO ] Access token: scope='openid profile email offline_access' iat=2026-11-10T15:59:11+00:00 exp=2026-11-10T16:04:11+00:00
+[2026-11-10T15:59:11.400+00:00] [PASS ] Access token TTL = exp - iat = 300 s (expected 300 s) -> PASS
+[2026-11-10T15:59:11.400+00:00] [PASS ] New refresh token RT2 fp=e5bdc5dc4d3cbb6f -> rotation ENABLED (RT2 != RT1)
+[2026-11-10T15:59:11.400+00:00] [INFO ] Step 3 - Waiting 2 s (longer than the rotation reuse interval) ...
+[2026-11-10T15:59:13.401+00:00] [INFO ] Step 4 - REPLAY the OLD refresh token RT1 (already rotated)
+[2026-11-10T15:59:13.401+00:00] [INFO ] [RT1 replay] using refresh token fp=cfbd27862e82d254
+[2026-11-10T15:59:13.401+00:00] [INFO ] POST https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/oauth/token (grant_type=refresh_token)
+[2026-11-10T15:59:13.724+00:00] [INFO ] Auth0 responded: HTTP 403
+[2026-11-10T15:59:13.724+00:00] [INFO ] Response body: error=invalid_grant error_description='Unknown or invalid refresh token.'
+[2026-11-10T15:59:13.724+00:00] [PASS ] Old refresh token replay -> HTTP 403 invalid_grant -> PASS (rejected)
+[2026-11-10T15:59:13.724+00:00] [INFO ] Step 5 - Reuse detection: try RT2 after RT1 was replayed (family should be revoked)
+[2026-11-10T15:59:13.724+00:00] [INFO ] [RT2 after reuse] using refresh token fp=e5bdc5dc4d3cbb6f
+[2026-11-10T15:59:13.725+00:00] [INFO ] POST https://sapphire-hookworm-42444.cic-demo-platform.auth0app.com/oauth/token (grant_type=refresh_token)
+[2026-11-10T15:59:14.067+00:00] [INFO ] Auth0 responded: HTTP 403
+[2026-11-10T15:59:14.067+00:00] [INFO ] RT2 -> HTTP 403 invalid_grant -> token family revoked (breach detection)
+[2026-11-10T15:59:14.067+00:00] [PASS ] RESULT: TTL=300s OK | rotation ON | old RT replay REJECTED -> PASS
+[2026-11-10T15:59:14.067+00:00] [INFO ] Evidence saved to /workspaces/capstone-ai-id-secure/04-blue-team/evidence/refresh-rotation-20261110T155756Z.log

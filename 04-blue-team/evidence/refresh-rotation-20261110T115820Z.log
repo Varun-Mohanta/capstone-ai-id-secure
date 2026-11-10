@@ -1,0 +1,4 @@
+[2026-11-10T11:58:20.831+00:00] [INFO ] === Auth0 hardening: access token TTL + refresh token rotation ===
+[2026-11-10T11:58:20.831+00:00] [INFO ] Tenant=sapphire-hookworm-42444.cic-demo-platform.auth0app.com client=B4JywsrZbzfCMB50dTMOvvkmBn4iuG12 audience=https://api.securenova.local/
+[2026-11-10T11:58:20.832+00:00] [INFO ] Step 1 - Authorization Code + PKCE login (S256). Open this URL in a browser and sign in:
+[2026-11-10T11:58:20.832+00:00] [INFO ] Waiting for the redirect on http://localhost:8000/chat ...

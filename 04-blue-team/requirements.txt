@@ -1,0 +1,5 @@
+# Python 3.10-3.13 (NeMo Guardrails does not yet import on Python 3.14)
+nemoguardrails>=0.24
+cryptography>=42
+requests>=2.31
+PyJWT[crypto]>=2.8

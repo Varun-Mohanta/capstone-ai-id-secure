@@ -1,0 +1,23 @@
+# Input rail: block prompt injection / extraction / spoofing / tool-abuse payloads.
+define flow securenova input guardrail
+  $input_blocked = execute check_input_guardrail(text=$user_message)
+  if $input_blocked
+    bot refuse unsafe input
+    stop
+
+define bot refuse unsafe input
+  "Request blocked by the SecureNova input guardrail."
+
+# Output rail 1: replace any JWT-shaped credential in the reply with [REDACTED].
+define flow securenova redact credentials
+  $bot_message = execute redact_credentials_output(text=$bot_message)
+
+# Output rail 2: withhold replies that contain system-prompt canary fragments.
+define flow securenova block prompt leak
+  $prompt_leak = execute check_prompt_leak(text=$bot_message)
+  if $prompt_leak
+    bot refuse prompt leak
+    stop
+
+define bot refuse prompt leak
+  "Response withheld by the SecureNova output guardrail."

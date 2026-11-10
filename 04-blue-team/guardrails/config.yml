@@ -1,0 +1,15 @@
+# NeMo Guardrails configuration for the hardened NovaAssist agent.
+# The main LLM is injected in code (guarded_app.py), so no model is listed here.
+# passthrough: skip dialog/intent rails; every message goes straight to the LLM
+# after the input rails, and every reply passes through the output rails.
+models: []
+passthrough: true
+
+rails:
+  input:
+    flows:
+      - securenova input guardrail
+  output:
+    flows:
+      - securenova redact credentials
+      - securenova block prompt leak

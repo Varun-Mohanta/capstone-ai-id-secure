@@ -1,0 +1,71 @@
+============================================================================================
+  PROJECT 4 - Anomaly detection: LLM call spike | scope change | expired token reuse
+============================================================================================
+[20:30:26.506Z] DETECTOR           | R1 LLM_API_VOLUME_SPIKE  > 20 llm_api_call per identity in 60 s
+[20:30:26.506Z] DETECTOR           | R2 SCOPE_CHANGE          scope differs between consecutive requests of one identity
+[20:30:26.506Z] DETECTOR           | R3 EXPIRED_TOKEN_REUSE   request presents a token after its exp
+[20:30:26.507Z] SYSTEM             | Replaying Project 3 attacks as 37 timestamped events
+[20:30:26.507Z] EVENT              | 2026-11-09T20:31:26.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 1
+[20:30:26.507Z] EVENT              | 2026-11-09T20:31:27.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 2
+[20:30:26.507Z] EVENT              | 2026-11-09T20:31:29.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 3
+[20:30:26.507Z] EVENT              | 2026-11-09T20:31:30.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 4
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:32.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 5
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:33.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 6
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:35.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 7
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:36.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 8
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:38.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 9
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:39.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 10
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:41.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 11
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:42.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 12
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:44.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 13
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:45.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 14
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:47.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 15
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:48.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 16
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:50.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 17
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:51.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 18
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:53.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 19
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:54.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 20
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:56.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 21
+[20:30:26.508Z] ALERT              | [HIGH] LLM_API_VOLUME_SPIKE ts=2026-11-09T20:31:56.000Z identity=auth0|eve event_type=llm_api_call
+[20:30:26.508Z] ALERT              |    21 LLM API calls in 30.0s (limit 20/60s) | attack=F3/F1 prompt extraction + injection probing
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:57.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 22
+[20:30:26.508Z] EVENT              | 2026-11-09T20:31:59.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 23
+[20:30:26.508Z] EVENT              | 2026-11-09T20:32:00.500Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 24
+[20:30:26.508Z] EVENT              | 2026-11-09T20:32:02.000Z auth0|eve              llm_api_call   scope='openid read:ai-data' src=sim3/sim1 payload variant 25
+[20:30:26.508Z] EVENT              | 2026-11-09T20:32:18.000Z agent|research-agent   agent_request  scope='read:ai-data write:admin' src=grant_role via forged ORCHESTRATOR ENVELOPE
+[20:30:26.508Z] ALERT              | [CRITICAL] SCOPE_CHANGE ts=2026-11-09T20:32:18.000Z identity=agent|research-agent event_type=agent_request
+[20:30:26.508Z] ALERT              |    scope 'read:ai-data' -> 'read:ai-data write:admin' (added=['write:admin'] removed=-) | attack=F2 agent identity spoofing
+[20:30:26.508Z] EVENT              | 2026-11-09T20:32:36.000Z auth0|eve              api_request    scope='openid read:ai-data write:admin' src=[support-console] NOVA-ADMIN-2291 list_all_customers
+[20:30:26.509Z] ALERT              | [CRITICAL] SCOPE_CHANGE ts=2026-11-09T20:32:36.000Z identity=auth0|eve event_type=api_request
+[20:30:26.509Z] ALERT              |    scope 'openid read:ai-data' -> 'openid read:ai-data write:admin' (added=['write:admin'] removed=-) | attack=F4 role escalation user->admin
+[20:30:26.509Z] EVENT              | 2026-11-09T20:32:57.000Z agent|novaassist-01    mcp_tool_call  scope='read:ai-data write:admin' src=tools/call crm.export_customers (kb-105)
+[20:30:26.509Z] ALERT              | [CRITICAL] SCOPE_CHANGE ts=2026-11-09T20:32:57.000Z identity=agent|novaassist-01 event_type=mcp_tool_call
+[20:30:26.509Z] ALERT              |    scope 'read:ai-data' -> 'read:ai-data write:admin' (added=['write:admin'] removed=-) | attack=F5 RAG poisoning + MCP abuse
+[20:30:26.509Z] EVENT              | 2026-11-09T20:42:06.000Z agent|novaassist-01    api_request    scope='read:ai-data write:admin' src=attacker replays exfiltrated AGENT_SERVICE_TOKEN from 198.51.100.23
+[20:30:26.509Z] ALERT              | [HIGH] EXPIRED_TOKEN_REUSE ts=2026-11-09T20:42:06.000Z identity=agent|novaassist-01 event_type=api_request
+[20:30:26.509Z] ALERT              |    token fp=921b7680b682 used 260s after exp 2026-11-09T20:37:46.000Z | attack=F1 stolen credential replay
+
+--- Alerts ---------------------------------------------------------------------------------
+Timestamp (UTC)          | Identity             | Event type    | Rule                 | Severity | Project 3 attack                           
+-------------------------+----------------------+---------------+----------------------+----------+--------------------------------------------
+2026-11-09T20:31:56.000Z | auth0|eve            | llm_api_call  | LLM_API_VOLUME_SPIKE | HIGH     | F3/F1 prompt extraction + injection probing
+2026-11-09T20:32:18.000Z | agent|research-agent | agent_request | SCOPE_CHANGE         | CRITICAL | F2 agent identity spoofing                 
+2026-11-09T20:32:36.000Z | auth0|eve            | api_request   | SCOPE_CHANGE         | CRITICAL | F4 role escalation user->admin             
+2026-11-09T20:32:57.000Z | agent|novaassist-01  | mcp_tool_call | SCOPE_CHANGE         | CRITICAL | F5 RAG poisoning + MCP abuse               
+2026-11-09T20:42:06.000Z | agent|novaassist-01  | api_request   | EXPIRED_TOKEN_REUSE  | HIGH     | F1 stolen credential replay                
+
+--- Rule coverage --------------------------------------------------------------------------
+Rule                 | Fired
+---------------------+------
+LLM_API_VOLUME_SPIKE | YES  
+SCOPE_CHANGE         | YES  
+EXPIRED_TOKEN_REUSE  | YES  
+Project 3 attack replayed                   | Alerted
+--------------------------------------------+--------
+F1 stolen credential replay                 | YES    
+F2 agent identity spoofing                  | YES    
+F3/F1 prompt extraction + injection probing | YES    
+F4 role escalation user->admin              | YES    
+F5 RAG poisoning + MCP abuse                | YES    
+[20:30:26.509Z] VERDICT            | 5 alerts | rules fired 3/3 | baseline false alerts: 0
+[20:30:26.510Z] SYSTEM             | Alerts written to /workspaces/capstone-ai-id-secure/04-blue-team/evidence/alerts-20261109T203026Z.jsonl
