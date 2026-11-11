@@ -1,339 +1,140 @@
-<mxfile host="app.diagrams.net">
-  <diagram id="9opgNcDAsHZ281YdBx4-" name="Page-1">
-    <mxGraphModel dx="4181" dy="2289" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+<mxfile host="Electron" agent="build_threat_model.py" type="device">
+  <diagram id="Identity-DFD" name="Identity DFD">
+    <mxGraphModel dx="2400" dy="1400" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0" background="#FFFFFF">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="SfS5d_b1LlPipq5uWN2H-12" parent="1" style="swimlane;startSize=23;" value="User and Frontend Boundary" vertex="1">
-          <mxGeometry height="200" width="620" x="-140" y="130" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
+        <mxCell id="v2" value="TB1 USER LAYER" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="260" width="260" height="420" as="geometry" />
         </mxCell>
-        <mxCell id="5Jz0Fb8RFve29TmoE1L2-1" parent="SfS5d_b1LlPipq5uWN2H-12" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.user;labelPerimeter=1;" value="" vertex="1">
-          <mxGeometry height="75.51" width="80" x="60" y="70" as="geometry" />
+        <mxCell id="v3" value="TB2 IDENTITY PROVIDER (Auth0)" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="20" width="300" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-1" parent="SfS5d_b1LlPipq5uWN2H-12" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="User Interface" vertex="1">
-          <mxGeometry height="80.51" width="160" x="260" y="70" as="geometry" />
+        <mxCell id="v4" value="TB3 APPLICATION BACKEND" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="340" height="420" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-2" parent="1" style="swimlane;startSize=23;" value="Identity Provider Boundary" vertex="1">
-          <mxGeometry height="200" width="280" x="60" y="-260" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
+        <mxCell id="v5" value="TB4 AGENT LAYER" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="260" width="480" height="420" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-4" parent="LjPg32ZbXBq7cXBqKZuR-2" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Auth0 Tenant" vertex="1">
-          <mxGeometry height="80.51" width="160" x="60" y="70" as="geometry" />
+        <mxCell id="v6" value="TB5 INTERNAL API LAYER" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="900" y="730" width="400" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-5" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="LjPg32ZbXBq7cXBqKZuR-4">
+        <mxCell id="v7" value="TB6 RAG PIPELINE" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="260" width="470" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="v8" value="TB7 MCP TOOL LAYER" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="500" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="v9" value="TB8 EXTERNAL LLM PROVIDER" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#CC0000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=6;fontStyle=1;fontColor=#CC0000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="20" width="260" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="v10" value="Human User&lt;br&gt;[ID-1]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="560" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="v11" value="User Interface&lt;br&gt;(browser)" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="290" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="v12" value="Auth0 Tenant&lt;br&gt;(IdP)" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="50" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="v13" value="Chatbot Backend&lt;br&gt;(Web App client)" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="290" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="v14" value="Chat Session DB" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="335" y="560" width="145" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="v15" value="Secrets Manager&lt;br&gt;[ID-3 secret, ID-4 key]" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="560" width="155" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="v16" value="Orchestrator&lt;br&gt;Agent A [ID-2]" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="290" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="v17" value="Action Agent B&lt;br&gt;[ID-2, ID-3 M2M]" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="490" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="v18" value="LLM Provider&lt;br&gt;[ID-4 key]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="85" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="v19" value="RAG Service&lt;br&gt;[ID-5]" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1265" y="300" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="v20" value="Vector Store" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="320" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="v21" value="KB Content Sources&lt;br&gt;(articles, tickets, uploads)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="60" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="v22" value="MCP Server&lt;br&gt;[ID-6]" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="530" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="v23" value="Internal REST APIs" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="765" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" value="&lt;b&gt;F01&lt;/b&gt; Prompts + login input&lt;br&gt;[ID-1]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="v10" target="v11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-6" connectable="0" parent="LjPg32ZbXBq7cXBqKZuR-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="OIDC authorize with PKCE" vertex="1">
-          <mxGeometry relative="1" x="0.139" y="3" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-7" parent="1" style="swimlane;startSize=23;" value="Application Backend Boundary" vertex="1">
-          <mxGeometry height="844.7" width="900" x="570" y="-400" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-4" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="LjPg32ZbXBq7cXBqKZuR-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.16;exitY=1.011;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;exitPerimeter=0;" target="i-csC1BjC8-nbnDdYD8x-2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-5" connectable="0" parent="i-csC1BjC8-nbnDdYD8x-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="R/W on Chat Session Data" vertex="1">
-          <mxGeometry relative="1" x="-0.0104" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-12" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="LjPg32ZbXBq7cXBqKZuR-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-13" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Request plus validated user context" vertex="1">
-          <mxGeometry relative="1" x="0.0238" y="-1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-8" parent="LjPg32ZbXBq7cXBqKZuR-7" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Chatbot Backend Endpoint" vertex="1">
-          <mxGeometry height="150" width="160" x="10" y="205" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-16" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="i-csC1BjC8-nbnDdYD8x-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;">
+        <mxCell id="e25" value="&lt;b&gt;F02&lt;/b&gt; OIDC authorize + PKCE, MFA&lt;br&gt;[ID-1]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v11" target="v12">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="205" y="360" />
-              <mxPoint x="400" y="360" />
-            </Array>
-            <mxPoint x="400" y="190" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-17" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="M2M client credential from secrets manager" vertex="1">
-          <mxGeometry relative="1" x="-0.2954" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-18" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="i-csC1BjC8-nbnDdYD8x-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.85;exitY=0.05;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-19" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-18" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="LLM API key from secrets manager" vertex="1">
-          <mxGeometry relative="1" x="-0.4003" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-1" parent="LjPg32ZbXBq7cXBqKZuR-7" style="shape=datastore;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Secrets&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;manager&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="170" width="110" x="150" y="420" as="geometry" />
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-2" parent="LjPg32ZbXBq7cXBqKZuR-7" style="shape=datastore;whiteSpace=wrap;html=1;" value="&lt;font size=&quot;1&quot;&gt;Chat Session DB&lt;/font&gt;" vertex="1">
-          <mxGeometry height="170" width="110" x="20" y="420" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-14" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="i-csC1BjC8-nbnDdYD8x-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="LjPg32ZbXBq7cXBqKZuR-8">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="330" y="152.5" />
-              <mxPoint x="330" y="317.5" />
+              <mxPoint x="150" y="110" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-15" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Chatbot Response" vertex="1">
-          <mxGeometry relative="1" x="-0.172" y="-5" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-35" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="i-csC1BjC8-nbnDdYD8x-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="9Ku2-B-EkxNu_x1tOYUt-6">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="210" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-36" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-35" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="M2M token;&amp;nbsp;&lt;div&gt;least-privilege&lt;/div&gt;&lt;div&gt;&amp;nbsp;scope&lt;/div&gt;" vertex="1">
-          <mxGeometry relative="1" x="-0.0316" y="3" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-49" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="i-csC1BjC8-nbnDdYD8x-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="474.5730337078653" y="-120" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-50" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-49" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Prompt over TLS; API key in auth header" vertex="1">
-          <mxGeometry relative="1" x="-0.1964" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tm-agent-boundary" parent="LjPg32ZbXBq7cXBqKZuR-7" style="swimlane;startSize=23;" value="Agent Runtime Trust Boundary" vertex="1">
-          <mxGeometry height="190" width="230" x="360" y="20" as="geometry" />
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-9" parent="tm-agent-boundary" style="swimlane;startSize=23;" value="AI Chatbot Harness" vertex="1">
-          <mxGeometry height="150" width="190" x="20" y="25" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="9Ku2-B-EkxNu_x1tOYUt-1" parent="i-csC1BjC8-nbnDdYD8x-9" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=light-dark(#DD344C,#3399FF);strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.waf_bot;labelPerimeter=1;" value="" vertex="1">
-          <mxGeometry height="84.7" width="84.7" x="52.64999999999998" y="40" as="geometry" />
-        </mxCell>
-        <mxCell id="9Ku2-B-EkxNu_x1tOYUt-3" parent="LjPg32ZbXBq7cXBqKZuR-7" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=light-dark(#434445,#FFFFFF);aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.key;labelPerimeter=1;rotation=90;" value="" vertex="1">
-          <mxGeometry height="41.67" width="20" x="195" y="419.16" as="geometry" />
-        </mxCell>
-        <mxCell id="9Ku2-B-EkxNu_x1tOYUt-5" parent="LjPg32ZbXBq7cXBqKZuR-7" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/icon-cache1/bitsies_-2960/Message-1454.svg;labelPerimeter=1;imageBackground=none;" value="" vertex="1">
-          <mxGeometry height="20" width="20" x="65" y="430" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-37" edge="1" parent="LjPg32ZbXBq7cXBqKZuR-7" source="9Ku2-B-EkxNu_x1tOYUt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="i-csC1BjC8-nbnDdYD8x-9">
+        <mxCell id="e26" value="&lt;b&gt;F03&lt;/b&gt; Code + verifier -&amp;gt; tokens&lt;br&gt;[Web App client, ID-1 tokens]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v13" target="v12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-38" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-37" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="API response" vertex="1">
-          <mxGeometry relative="1" x="0.3782" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tm-api-boundary" parent="LjPg32ZbXBq7cXBqKZuR-7" style="swimlane;startSize=23;" value="Internal API Trust Boundary" vertex="1">
-          <mxGeometry height="130" width="250" x="410" y="600" as="geometry" />
-        </mxCell>
-        <mxCell id="9Ku2-B-EkxNu_x1tOYUt-6" parent="tm-api-boundary" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Internal REST APIs" vertex="1">
-          <mxGeometry height="60" width="190" x="20" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-9" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="LjPg32ZbXBq7cXBqKZuR-8">
+        <mxCell id="e27" value="&lt;b&gt;F04&lt;/b&gt; Chat request + session cookie&lt;br&gt;[ID-1 session]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v11" target="v13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-11" connectable="0" parent="LjPg32ZbXBq7cXBqKZuR-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Token endpoint response (ID + access tokens)" vertex="1">
-          <mxGeometry relative="1" x="-0.007" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-12" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.667;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;entryPerimeter=0;" target="LjPg32ZbXBq7cXBqKZuR-8">
+        <mxCell id="e28" value="&lt;b&gt;F05&lt;/b&gt; R/W chat session data&lt;br&gt;[Backend service DB account]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v13" target="v14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-14" connectable="0" parent="LjPg32ZbXBq7cXBqKZuR-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Browser callback with authorization code" vertex="1">
-          <mxGeometry relative="1" x="0.021" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tm-auth-redirect" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" target="LjPg32ZbXBq7cXBqKZuR-1">
+        <mxCell id="e29" value="&lt;b&gt;F06&lt;/b&gt; Request + validated user context&lt;br&gt;[ID-1 context -&amp;gt; ID-2]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v13" target="v16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tm-auth-redirect-label" connectable="0" parent="tm-auth-redirect" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Redirect with authorization code" vertex="1">
-          <mxGeometry relative="1" x="0.1" as="geometry"><mxPoint as="offset" /></mxGeometry>
-        </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-15" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;" target="LjPg32ZbXBq7cXBqKZuR-4">
+        <mxCell id="e30" value="&lt;b&gt;F07&lt;/b&gt; LLM API key&lt;br&gt;[ID-4 (read by ID-2)]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="v15" target="v16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LjPg32ZbXBq7cXBqKZuR-17" connectable="0" parent="LjPg32ZbXBq7cXBqKZuR-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Code and PKCE verifier exchange" vertex="1">
-          <mxGeometry relative="1" x="-0.0428" y="-2" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-6" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.006;exitY=0.851;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;exitPerimeter=0;" target="LjPg32ZbXBq7cXBqKZuR-1">
-          <mxGeometry relative="1" x="-0.0229" as="geometry" />
-        </mxCell>
-        <mxCell id="i-csC1BjC8-nbnDdYD8x-7" connectable="0" parent="i-csC1BjC8-nbnDdYD8x-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Chat response + secure session cookie" vertex="1">
-          <mxGeometry relative="1" x="-0.066" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tm-chat-request" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" target="LjPg32ZbXBq7cXBqKZuR-8">
+        <mxCell id="e31" value="&lt;b&gt;F08&lt;/b&gt; M2M client secret&lt;br&gt;[ID-3 (read by ID-2)]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="v15" target="v17">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tm-chat-request-label" connectable="0" parent="tm-chat-request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Chat request with session cookie" vertex="1">
-          <mxGeometry relative="1" x="0.1" as="geometry"><mxPoint as="offset" /></mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-6" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="LLM Provider" vertex="1">
-          <mxGeometry height="60" width="190" x="990" y="-580" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-8" edge="1" parent="1" source="LjPg32ZbXBq7cXBqKZuR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-11" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="M2M access token response (audience + scopes)" vertex="1">
-          <mxGeometry relative="1" x="-0.0544" y="-3" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tm-m2m-request" edge="1" parent="1" source="i-csC1BjC8-nbnDdYD8x-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" target="LjPg32ZbXBq7cXBqKZuR-4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="tm-m2m-request-label" connectable="0" parent="tm-m2m-request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Client credentials grant (M2M client)" vertex="1">
-          <mxGeometry relative="1" x="-0.1" as="geometry"><mxPoint as="offset" /></mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-41" edge="1" parent="1" source="ZZUeTvOivUty2PUnIojb-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="9Ku2-B-EkxNu_x1tOYUt-6">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-42" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-41" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Tool call with MCP server identity" vertex="1">
-          <mxGeometry relative="1" x="-0.0166" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-43" edge="1" parent="1" source="ZZUeTvOivUty2PUnIojb-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1120" y="-210" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-44" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-43" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Tool Response" vertex="1">
-          <mxGeometry relative="1" x="0.0691" y="-3" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-45" edge="1" parent="1" source="ZZUeTvOivUty2PUnIojb-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;startArrow=classic;startFill=1;endArrow=none;endFill=0;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-46" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-45" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Tool request with agent identity" vertex="1">
-          <mxGeometry relative="1" x="-0.4565" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ZZUeTvOivUty2PUnIojb-1" parent="1" style="swimlane;startSize=23;" value="MCP Server Trust Boundary" vertex="1">
-          <mxGeometry height="150" width="190" x="1520" y="200" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-1" parent="ZZUeTvOivUty2PUnIojb-1" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=light-dark(#0080F0, #ffffff);shadow=0;dashed=0;shape=mxgraph.ios7.icons.tools;pointerEvents=1;labelPerimeter=1;" value="" vertex="1">
-          <mxGeometry height="84.7" width="80" x="55" y="40" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-3" parent="1" style="swimlane;startSize=23;" value="RAG Pipeline" vertex="1">
-          <mxGeometry height="362.65" width="655" x="1790" y="-400" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-29" edge="1" parent="bTgji5t8-CfWD9DLzxvU-3" source="bTgji5t8-CfWD9DLzxvU-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="bTgji5t8-CfWD9DLzxvU-25">
+        <mxCell id="e32" value="&lt;b&gt;F09&lt;/b&gt; Client credentials -&amp;gt; M2M token&lt;br&gt;[ID-3]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v17" target="v12">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="345" y="232" />
-              <mxPoint x="345" y="97.7" />
+              <mxPoint x="1210" y="500" />
+              <mxPoint x="1210" y="110" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-32" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-29" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Retrieved&lt;br&gt;Chunks" vertex="1">
-          <mxGeometry relative="1" x="0.2709" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-7" parent="bTgji5t8-CfWD9DLzxvU-3" style="shape=datastore;whiteSpace=wrap;html=1;" value="&lt;font size=&quot;1&quot;&gt;Vector Store&lt;/font&gt;" vertex="1">
-          <mxGeometry height="270" width="155" x="475" y="43" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-23" edge="1" parent="bTgji5t8-CfWD9DLzxvU-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="244.99999999999955" y="253" as="sourcePoint" />
-            <mxPoint x="244.99999999999955" y="112.65000000000009" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-24" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Query embedding response" vertex="1">
-          <mxGeometry relative="1" x="0.0167" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-20" parent="bTgji5t8-CfWD9DLzxvU-3" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Embedding Service" vertex="1">
-          <mxGeometry height="60" width="190" x="95" y="252.99999999999997" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-26" edge="1" parent="bTgji5t8-CfWD9DLzxvU-3" source="bTgji5t8-CfWD9DLzxvU-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="bTgji5t8-CfWD9DLzxvU-20">
+        <mxCell id="e33" value="&lt;b&gt;F10&lt;/b&gt; Prompt + API key in header&lt;br&gt;[ID-4]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v16" target="v18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-27" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Embedding request with RAG identity" vertex="1">
-          <mxGeometry relative="1" x="0.0287" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-28" edge="1" parent="bTgji5t8-CfWD9DLzxvU-3" source="bTgji5t8-CfWD9DLzxvU-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="bTgji5t8-CfWD9DLzxvU-7">
+        <mxCell id="e34" value="&lt;b&gt;F11&lt;/b&gt; Query / retrieved chunks&lt;br&gt;[ID-2 -&amp;gt; ID-5]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v16" target="v19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-30" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-28" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Scoped search with RAG service identity" vertex="1">
-          <mxGeometry relative="1" x="-0.0096" y="-3" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-25" parent="bTgji5t8-CfWD9DLzxvU-3" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="RAG Service" vertex="1">
-          <mxGeometry height="60" width="190" x="95" y="52.64999999999998" as="geometry" />
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-21" edge="1" parent="1" source="i-csC1BjC8-nbnDdYD8x-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="bTgji5t8-CfWD9DLzxvU-25">
+        <mxCell id="e35" value="&lt;b&gt;F12&lt;/b&gt; Vector search / upsert&lt;br&gt;[ID-5]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v19" target="v20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-22" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Query text with agent identity" vertex="1">
-          <mxGeometry relative="1" x="-0.4939" y="2" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-39" edge="1" parent="1" source="9Ku2-B-EkxNu_x1tOYUt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="ZZUeTvOivUty2PUnIojb-1">
+        <mxCell id="e36" value="&lt;b&gt;F13&lt;/b&gt; Content ingestion&lt;br&gt;[Ingestion writer (ID-5)]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="v21" target="v19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-40" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-39" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Tool Result" vertex="1">
-          <mxGeometry relative="1" x="0.0066" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
+        <mxCell id="e37" value="&lt;b&gt;F14&lt;/b&gt; Delegated task message&lt;br&gt;[ID-2 -&amp;gt; ID-2]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v16" target="v17">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-33" edge="1" parent="1" source="bTgji5t8-CfWD9DLzxvU-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" x="-0.2649" as="geometry">
-            <mxPoint x="1325" y="-302" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="e38" value="&lt;b&gt;F15&lt;/b&gt; API call with M2M token&lt;br&gt;[ID-3]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v17" target="v23">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-34" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-33" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Text" vertex="1">
-          <mxGeometry relative="1" x="-0.0475" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
+        <mxCell id="e39" value="&lt;b&gt;F16&lt;/b&gt; MCP tool request&lt;br&gt;[ID-2 -&amp;gt; ID-6]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v17" target="v22">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-47" parent="1" style="swimlane;startSize=23;" value="External Provider" vertex="1">
-          <mxGeometry height="200" width="280" x="945" y="-650" as="geometry">
-            <mxRectangle height="30" width="100" x="280" y="130" as="alternateBounds" />
-          </mxGeometry>
+        <mxCell id="e40" value="&lt;b&gt;F17&lt;/b&gt; Tool call with MCP identity&lt;br&gt;[ID-6]" style="html=1;rounded=1;strokeColor=#CC0000;strokeWidth=1.5;endArrow=block;endFill=1;fontSize=9;labelBackgroundColor=#FFFFFF;startArrow=block;startFill=1;" edge="1" parent="1" source="v22" target="v23">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-51" edge="1" parent="1" source="bTgji5t8-CfWD9DLzxvU-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.961;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;" target="i-csC1BjC8-nbnDdYD8x-9">
-          <mxGeometry relative="1" x="0.1241" as="geometry" />
+        <mxCell id="v41" value="&lt;b&gt;IDENTITIES (Task 1)&lt;/b&gt;&lt;br&gt;&lt;b&gt;ID-1&lt;/b&gt; Human user (customer / admin): Customer: read:ai-data&lt;br&gt;&lt;b&gt;ID-2&lt;/b&gt; AI agent (Orchestrator Agent A + Action Agent B): Acts on behalf of the signed-in user, so it should never hold more than the user&amp;#x27;s own scope (read:ai-data)&lt;br&gt;&lt;b&gt;ID-3&lt;/b&gt; OAuth M2M client (Action Agent B): read:ai-data on the Internal REST APIs&lt;br&gt;&lt;b&gt;ID-4&lt;/b&gt; LLM API key: Full inference on the provider account: every model, spend up to the account limit&lt;br&gt;&lt;b&gt;ID-5&lt;/b&gt; RAG pipeline service identity: Query: read-only on the vector store, filtered by tenant&lt;br&gt;&lt;b&gt;ID-6&lt;/b&gt; MCP server identity: Per-tool scopes on an allow-list (for example tickets:read, refunds:create up to a limit)&lt;br&gt;&lt;br&gt;User layer TB1 -&gt; Agent layer TB4 via F04, F06. Agent layer TB4 -&gt; Internal API layer TB5 via F15, F16 -&gt; F17.&lt;br&gt;Red dashed box = trust boundary. Every flow has 6 STRIDE entries (STRIDE-Matrix.xlsx)." style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacing=6;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="20" y="720" width="860" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="bTgji5t8-CfWD9DLzxvU-52" connectable="0" parent="bTgji5t8-CfWD9DLzxvU-51" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Model Response" vertex="1">
-          <mxGeometry relative="1" x="-0.4353" y="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
+        <mxCell id="v42" value="&lt;b&gt;SecureNova AI Customer Service Platform - Identity data-flow diagram&lt;/b&gt;" style="text;html=1;fontSize=18;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="-30" width="900" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
