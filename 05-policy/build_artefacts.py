@@ -378,7 +378,7 @@ def build_presentation(matrix_png, recs_png):
 
     slide("1. Threat model", [
         "6 identity types: human user, AI agent, OAuth M2M client, LLM API key, RAG service, MCP server",
-        "14 identity flows x 6 STRIDE categories = 84 assessments; 8 trust boundaries (OWASP Threat Dragon)",
+        "17 identity flows x 6 STRIDE categories = 102 assessments; 8 trust boundaries (OWASP Threat Dragon)",
         "3 attack trees scored Likelihood x Impact:",
         "  AT1 LLM API key exfiltration via prompt injection - 20 Critical",
         "  AT2 Agent identity spoofing to gain write:admin - 20 Critical",
