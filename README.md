@@ -2,14 +2,17 @@
 
 ## 01 - Threat Model
 
+All artefacts are generated from [threat_model_data.py](01-threat-model/threat_model_data.py) by `python3 01-threat-model/build_threat_model.py` (add `--png` to export PNGs). The method and the screenshot guide are in [01-threat-model/README.md](01-threat-model/README.md).
+
 | Artefact | Description |
 |---|---|
-| [Threat Model v3.drawio](01-threat-model/Threat%20Model%20v3.drawio) | Data-flow diagram with trust boundaries and a STRIDE summary |
-| [STRIDE-Matrix.md](01-threat-model/STRIDE-Matrix.md) | STRIDE matrix: 14 identity flows x 6 categories, with mitigations and owners |
-| [STRIDE-Matrix.xml](01-threat-model/STRIDE-Matrix.xml) | Same matrix as an Excel workbook (XML Spreadsheet): Matrix, Summary, Flows and Trust Boundaries sheets |
-| [SecureNova-Threat-Dragon.json](01-threat-model/SecureNova-Threat-Dragon.json) | OWASP Threat Dragon v2 model (import at threatdragon.com) |
-| [Attack Trees.drawio](01-threat-model/Attack%20Trees.drawio) | Three attack trees (one page each): LLM API key exfiltration, agent identity spoofing, RAG chunk poisoning |
-| [Attack-Trees.md](01-threat-model/Attack-Trees.md) | Attack tree scoring (Likelihood x Impact = Risk), per-node tables and highest-risk paths, plus PNG exports |
+| [Identity-Inventory.md](01-threat-model/Identity-Inventory.md) | 6 identity types with authentication mechanism and privilege level |
+| [SecureNova-Threat-Dragon.json](01-threat-model/SecureNova-Threat-Dragon.json) | OWASP Threat Dragon v2 model: DFD with 8 trust boundaries, 17 identity flows and 6 STRIDE entries per flow |
+| [Threat Model.drawio](01-threat-model/Threat%20Model.drawio) | The same DFD in draw.io (PNG export: Threat Model.png) |
+| [STRIDE-Matrix.xlsx](01-threat-model/STRIDE-Matrix.xlsx) / [.md](01-threat-model/STRIDE-Matrix.md) | 17 flows x 6 STRIDE categories = 102 cells (100 threats, 2 N/A) with mitigations and owners |
+| [Attack Trees.drawio](01-threat-model/Attack%20Trees.drawio) / [Attack-Trees.md](01-threat-model/Attack-Trees.md) | Three scored attack trees (AT1 20, AT2 20, AT3 16) with PNG exports |
+| [ATLAS-Mapping.md](01-threat-model/ATLAS-Mapping.md) | MITRE ATLAS technique per attack tree and per attack path |
+| [Risk-Register.xlsx](01-threat-model/Risk-Register.xlsx) / [.md](01-threat-model/Risk-Register.md) | All threats ranked by Risk Score with owner, ATLAS ID and planned control |
 ## 02 - IAM Design
 
 ### Credential Rotation: M2M token expiry test
